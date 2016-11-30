@@ -86,4 +86,102 @@ void changeLength1D(T*& a, int oldLength, int newLength) {
 	delete[] a;
 	a = temp;
 }
+
+// stack is empty
+class stackEmpty {
+public:
+	stackEmpty(string theMessage = "Invalid operation on empty stack") {
+		message = theMessage;
+	}
+	void outputMessage() {
+		cout << message << endl;
+	}
+private:
+	string message;
+};
+// queue is empty
+class queueEmpty {
+public:
+	queueEmpty(string theMessage = "Invalid operation on empty queue") {
+		message = theMessage;
+	}
+	void outputMessage() {
+		cout << message << endl;
+	}
+private:
+	string message;
+};
+// hash table is full
+class hashTableFull {
+public:
+	hashTableFull(string theMessage = "The hash table is full") {
+		message = theMessage;
+	}
+	void outputMessage() {
+		cout << message << endl;
+	}
+private:
+	string message;
+};
+// Tree is empty
+class emptyTree {
+public:
+	emptyTree(string theMessage = "Invalid operation on empty tree") {
+		message = theMessage;
+	}
+	void outputMessage() {
+		cout << message << endl;
+	}
+private:
+	string message;
+};
+
+struct player {
+	int id, key;
+
+	operator int() const {
+		return key;
+	}
+};
+
+// method undefined
+class undefinedMethod {
+public:
+	undefinedMethod(string theMessage = "This method is undefined") {
+		message = theMessage;
+	}
+	void outputMessage() {
+		cout << message << endl;
+	}
+private:
+	string message;
+};
+
+template<class T>
+bool make2dArray(T ** &x, int numberOfRows, int numberOfColumns) { // Create a two dimensional array.
+
+	try {
+		// create pointers for the rows
+		x = new T *[numberOfRows];
+
+		// get memory for each row
+		for (int i = 0; i < numberOfRows; i++)
+			x[i] = new int[numberOfColumns];
+		return true;
+	} catch (bad_alloc) {
+		return false;
+	}
+}
+
+template<class T>
+void delete2dArray(T ** &theArray, int numberOfRows) { // Delete the two-dimensional array theArray.
+
+	// delete the memory for each row
+	for (int i = 0; i < numberOfRows; i++)
+		delete[] theArray[i];
+
+	// delete the row pointers
+	delete[] theArray;
+	theArray = 0;
+}
 #endif /* INC_COMMON_H_ */
